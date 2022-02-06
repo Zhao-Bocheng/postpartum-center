@@ -1,0 +1,102 @@
+<!-- 
+    当前容器宽度容不下整个图，如何实现滚动展示图例 -- solved 用 dataZoom 的 inside
+    能否指定显示的指标-- solved 点击 legend 即可实现
+    设置一条警戒线 -- solved 在对应的 series 设置一个 markLine
+    如何取消警戒线点击加租 -- sovled 临时方案： markLine >> emphasis >> lineStyle >> width: 1
+    
+    如何在拖拽数据区域时不触发 toolTip 
+    当没有超出警戒值时怎么隐藏警戒线（可能需要在获取到数据时额外判断）
+    
+    折线图切换为柱状图
+    异常的指标在点击后显示的tooltip对应的数值变为红色
+    tooltip自定义一个带单位的显示格式
+    指标应该包括 黄疸、体温、排便次数、体重、喂奶次数
+    定时更新数据
+    今日数据栏（包含几个数据项）
+    能否指定显示指标的时间范围（1周？1个月？）
+    近七天各项数据（用一个tab栏切换不同的折线图） 
+    过去一段时间的指标异常次数
+-->
+<view>宝宝今日数据</view>
+<!-- 本周数据 -->
+<view class="charts-wrap module-wrap">
+  <view class="charts-container">
+    <ec-canvas id="baby-dom-line"
+               canvas-id="baby-line"
+               ec="{{ ec }}">
+    </ec-canvas>
+  </view>
+</view>
+
+<!-- 
+  使用 swiper 组件展示待使用服务，当多于两个服务时，轮播的下一张或前一张要露出一部分以便提示还有内容
+  没有服务的话显示没有并提示可以跳转到服务预定页
+ -->
+<!-- 待使用服务 -->
+<view class="unused-wrap module-wrap">
+  <view class="unused-swiper-wrap">
+    <swiper previous-margin="50rpx"
+            next-margin="50rpx"
+            snap-to-edge="{{true}}"
+            bindchange="unusedServiceSwiperChange">
+      <block wx:for="{{unusedList}}" wx:key="id">
+        <swiper-item>
+          <view class="unused-service {{index === currentSwiperItem ? 'current-swiper-item' : ''}}">
+            {{item.id}}
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
+
+<!-- 
+  根据返回的数据中的不同 tagNum 使用不同的 tag 样式（主要是指tag的颜色） -- sovled
+  实现点击推荐项跳转到目标页面（页面分为外部网页、小程序内普通页面、小程序内tab页、其他小程序的特定页面，似乎不能简单的通过 navigator 设置 url 来跳转，因为这个 navigator 组件的跳转是需要分情况的）
+  小程序文章页怎么构建
+  文章编写和上传页面
+ -->
+<!-- 今日推荐 -->
+<view class="rec-wrap module-wrap">
+  <view class="rec-hd">
+    <view class="rec-title">今日推荐</view>
+    <navigator target="self" open-type="switchTab"
+               url="/pages/mother/mother">更多
+    </navigator>
+  </view>
+  <view class="rec-bd">
+    <view class="rec-list">
+      <block wx:for="{{recList}}" wx:key="title">
+        <view class="rec-item">
+          <view class="item-text">
+            <view class="item-desc">
+              <view class="item-title">
+                {{item.title}}</view>
+              <view class="item-content">
+                {{item.desc}}</view>
+            </view>
+            <view class="item-label">
+              <view class="tag"
+                    data-tag-type="{{item.tagNum}}">
+                {{item.tag}}</view>
+              <view class="sub-tag">
+                {{item.subTag}}</view>
+            </view>
+          </view>
+          <view class="item-img">
+            <image mode="aspectFill"
+                   src="{{item.img}}">
+            </image>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<view>今日餐食</view>
+<navigator target="self" open-type="switchTab"
+           url="/pages/mother/mother">click me
+</navigator>
+<navigator target="self" open-type="navigate"
+           url="/pages/test/test">click me
+</navigator>

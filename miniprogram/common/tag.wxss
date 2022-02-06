@@ -1,0 +1,18 @@
+/* 标签的字体和背景配色 */
+/* 后续有新增的标签应该在此处添加 */
+
+/* 对应 tagNum === 1，以下以此类推 */
+[data-tag-type="1"] {
+  color: #f1714a!important;
+  background-color: #f1714a33!important;
+}
+
+[data-tag-type="2"] {
+  color: #7367f0!important;
+  background-color: #7367f033!important;
+}
+
+/* [data-tag-type="3"] {
+  color: #7367f0!important;
+  background-color: #7367f033!important;
+} */
