@@ -1,6 +1,6 @@
-Page {
+/* Page {
   background-color: #f6f6f6;
-}
+} */
 
 image {
   width: 100%;
