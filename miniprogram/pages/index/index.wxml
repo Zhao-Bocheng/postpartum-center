@@ -31,21 +31,25 @@
   没有服务的话显示没有并提示可以跳转到服务预定页
  -->
 <!-- 待使用服务 -->
-<view class="unused-wrap">
+<view class="unused-service-wrap">
   <view class="unused-service_hd">
-    <view class="unused-service-title">待使用服务</view>
+    <view class="title">待使用服务</view>
   </view>
   <view class="unused-service_bd">
     <view class="unused-swiper-wrap">
-      <swiper previous-margin="50rpx" next-margin="50rpx"
-              snap-to-edge="{{true}}" bindchange="unusedServiceSwiperChange">
+      <swiper class="unused-swiper" previous-margin="50rpx"
+              next-margin="50rpx" snap-to-edge="{{true}}"
+              bindchange="unusedServiceSwiperChange">
         <block wx:for="{{unusedList}}" wx:key="id">
           <swiper-item class="unused-swiper-item">
             <view
                   class="unused-service {{index === currentSwiperItem ? 'current-unused-service' : ''}}">
-              <view class="">
-                <view class="unused-service_title">{{item.servName}}</view>
-              <view class="unused-service_desc">{{item.servDesc}}</view>
+              <view class="unused-service-title_desc">
+                <view class="unused-service-title">{{item.servName}}</view>
+                <view class="unused-service-desc">{{item.servDesc}}</view>
+              </view>
+              <view class="unused-service-img">
+                <image mode="aspectFill" src="{{item.servImg}}"></image>
               </view>
             </view>
           </swiper-item>
@@ -63,12 +67,12 @@
  -->
 <!-- 今日推荐 -->
 <view class="rec-wrap module-wrap">
-  <view class="rec-hd">
-    <view class="rec-title">今日推荐</view>
+  <view class="rec_hd">
+    <view class="title">今日推荐</view>
     <navigator target="self" open-type="switchTab" url="/pages/mother/mother">更多
     </navigator>
   </view>
-  <view class="rec-bd">
+  <view class="rec_bd">
     <view class="rec-list">
       <block wx:for="{{recList}}" wx:key="title">
         <view class="rec-item">

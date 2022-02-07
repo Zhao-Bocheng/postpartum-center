@@ -181,7 +181,7 @@ Page({
       id: "2",
       servName: "催乳",
       servId: "101",
-      servDesc: "催乳wwwwwwwwwwwwwwwwwwwwwwwww",
+      servDesc: "催乳wwwwwwwwww",
       servImg: "https://636c-cloud1-9g50mutze1d19816-1309192011.tcb.qcloud.la/my-photo.png?sign=f82a25da3f43b5a8da039549e24ad15d&t=1644080779",
       
     }, {
