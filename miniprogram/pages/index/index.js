@@ -172,11 +172,24 @@ Page({
       subTag: "康复运动"
     }],
     unusedList: [{
-      id: "1"
+      id: "1",
+      servName: "骨盆修复",
+      servId: "100",
+      servDesc: "收胯提臀，帮助子宫复位",
+      servImg: "https://636c-cloud1-9g50mutze1d19816-1309192011.tcb.qcloud.la/my-photo.png?sign=f82a25da3f43b5a8da039549e24ad15d&t=1644080779"
     }, {
-      id: "2"
+      id: "2",
+      servName: "催乳",
+      servId: "101",
+      servDesc: "催乳wwwwwwwwwwwwwwwwwwwwwwwww",
+      servImg: "https://636c-cloud1-9g50mutze1d19816-1309192011.tcb.qcloud.la/my-photo.png?sign=f82a25da3f43b5a8da039549e24ad15d&t=1644080779",
+      
     }, {
-      id: "3"
+      id: "3",
+      servName: "中药水洗头",
+      servId: "102",
+      servDesc: "洗头wwwwwwwwww",
+      servImg: "https://636c-cloud1-9g50mutze1d19816-1309192011.tcb.qcloud.la/my-photo.png?sign=f82a25da3f43b5a8da039549e24ad15d&t=1644080779"
     }],
     currentSwiperItem: 0
   },

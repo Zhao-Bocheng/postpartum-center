@@ -21,9 +21,7 @@
 <!-- 本周数据 -->
 <view class="charts-wrap module-wrap">
   <view class="charts-container">
-    <ec-canvas id="baby-dom-line"
-               canvas-id="baby-line"
-               ec="{{ ec }}">
+    <ec-canvas id="baby-dom-line" canvas-id="baby-line" ec="{{ ec }}">
     </ec-canvas>
   </view>
 </view>
@@ -33,20 +31,27 @@
   没有服务的话显示没有并提示可以跳转到服务预定页
  -->
 <!-- 待使用服务 -->
-<view class="unused-wrap module-wrap">
-  <view class="unused-swiper-wrap">
-    <swiper previous-margin="50rpx"
-            next-margin="50rpx"
-            snap-to-edge="{{true}}"
-            bindchange="unusedServiceSwiperChange">
-      <block wx:for="{{unusedList}}" wx:key="id">
-        <swiper-item>
-          <view class="unused-service {{index === currentSwiperItem ? 'current-swiper-item' : ''}}">
-            {{item.id}}
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
+<view class="unused-wrap">
+  <view class="unused-service_hd">
+    <view class="unused-service-title">待使用服务</view>
+  </view>
+  <view class="unused-service_bd">
+    <view class="unused-swiper-wrap">
+      <swiper previous-margin="50rpx" next-margin="50rpx"
+              snap-to-edge="{{true}}" bindchange="unusedServiceSwiperChange">
+        <block wx:for="{{unusedList}}" wx:key="id">
+          <swiper-item class="unused-swiper-item">
+            <view
+                  class="unused-service {{index === currentSwiperItem ? 'current-unused-service' : ''}}">
+              <view class="">
+                <view class="unused-service_title">{{item.servName}}</view>
+              <view class="unused-service_desc">{{item.servDesc}}</view>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
   </view>
 </view>
 
@@ -60,32 +65,29 @@
 <view class="rec-wrap module-wrap">
   <view class="rec-hd">
     <view class="rec-title">今日推荐</view>
-    <navigator target="self" open-type="switchTab"
-               url="/pages/mother/mother">更多
+    <navigator target="self" open-type="switchTab" url="/pages/mother/mother">更多
     </navigator>
   </view>
   <view class="rec-bd">
     <view class="rec-list">
       <block wx:for="{{recList}}" wx:key="title">
         <view class="rec-item">
-          <view class="item-text">
-            <view class="item-desc">
-              <view class="item-title">
+          <view class="rec-item-msg">
+            <view class="rec-item-title_desc">
+              <view class="rec-item-title">
                 {{item.title}}</view>
-              <view class="item-content">
+              <view class="rec-item-desc">
                 {{item.desc}}</view>
             </view>
-            <view class="item-label">
-              <view class="tag"
-                    data-tag-type="{{item.tagNum}}">
+            <view class="rec-item-label">
+              <view class="tag" data-tag-type="{{item.tagNum}}">
                 {{item.tag}}</view>
               <view class="sub-tag">
                 {{item.subTag}}</view>
             </view>
           </view>
-          <view class="item-img">
-            <image mode="aspectFill"
-                   src="{{item.img}}">
+          <view class="rec-item-img">
+            <image mode="aspectFill" src="{{item.img}}">
             </image>
           </view>
         </view>
@@ -94,9 +96,8 @@
   </view>
 </view>
 <view>今日餐食</view>
-<navigator target="self" open-type="switchTab"
-           url="/pages/mother/mother">click me
+<navigator target="self" open-type="switchTab" url="/pages/mother/mother">click
+  me
 </navigator>
-<navigator target="self" open-type="navigate"
-           url="/pages/test/test">click me
+<navigator target="self" open-type="navigate" url="/pages/test/test">click me
 </navigator>
