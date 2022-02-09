@@ -50,7 +50,7 @@
               </view>
               <view class="unused-service-img">
                 <image mode="aspectFill" src="{{item.servImg}}"></image>
-              </view>
+              </view> 
             </view>
           </swiper-item>
         </block>

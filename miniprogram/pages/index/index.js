@@ -1,5 +1,8 @@
 import * as echarts from '../../ec-canvas/echarts';
 
+const app = getApp();
+const worker = app.globalData.worker;
+
 function initChart(canvas, width, height, dpr) {
   const chart = echarts.init(canvas, null, {
     width: width,
@@ -195,6 +198,16 @@ Page({
   },
 
   onReady() {},
+
+  onShow() {
+    worker.postMessage({
+      msg: "Hello worker"
+    });
+  },
+
+  onUnload() {
+    worker.terminate();
+  },
 
   unusedServiceSwiperChange(e) {
     this.setData({

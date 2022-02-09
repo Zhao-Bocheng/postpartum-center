@@ -45,5 +45,6 @@
       }
     ]
   },
+  "workers": "workers",
   "sitemapLocation": "sitemap.json"
 }
