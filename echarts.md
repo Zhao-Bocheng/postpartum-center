@@ -22,3 +22,9 @@
 实际上可以先通过`myChart.setOption(...)`建立一个空的坐标系，等数据获取到之后再独立地把数据填入，也就是说`options`实际上是可以分开多次填入的
 
 > https://echarts.apache.org/zh/tutorial.html#%E5%BC%82%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%9B%B4%E6%96%B0
+
+### 自定义构建
+https://echarts.apache.org/zh/builder.html
+
+### 文件压缩
+`echarts.js`的文件超过了500k，有警告，想办法解决
