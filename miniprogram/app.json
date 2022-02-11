@@ -13,7 +13,13 @@
     "navigationBarTitleText": "妈宝控",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": true,
+    "networkTimeout": {
+      "request": 20000,
+      "connectSocket": 20000,
+      "uploadFile": 20000,
+      "downloadFile": 20000
+    }
   },
   "tabBar": {
     "color": "#bfbfbf",
