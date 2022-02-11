@@ -28,39 +28,3 @@ https://echarts.apache.org/zh/builder.html
 
 ### 文件压缩
 `echarts.js`的文件超过了500k，有关于“已跳过压缩以及 ES6 转 ES5 的处理”的警告。但echarts.js本身已经经过压缩并转ES5，将其设置为体验版并在真机预览暂时没什么问题，先忽略该警告
-
-### 分包
-需要在`app.json`中配置`subPackages`和`preloadRule`
-```json
-// app.json
-{
-  "subPackages": [{
-    "root": "packageA",
-    "pages": {
-      "pages/foo/foo"
-    }
-  }, {
-    "root": "packageB",
-    "pages": {
-      "pages/bar/bar"
-    }
-  }],
-  "preloadRule": {
-    "page/index/index": {
-      "network": "all",
-      "packages": [
-        "packageA"
-      ]
-    },
-    "page/second/second": {
-      "network": "all",
-      "packages": [
-        "packageB"
-      ]
-    }
-  }
-}
-```
-小程序分包后会有一个主包和若干个分包，这些配置的目的是想将一些页面集合到某个包中，再将这些包和主包中的页面关联起来，当主包中的某个页面加载时，与其关联的包就会加载，小程序就只会加载需要的包了
-
-这里有个要注意的就是，这里的分包配置项`subPackages`的子项`pages`数组不能为空。对于分包之间，是不能直接相互引用
