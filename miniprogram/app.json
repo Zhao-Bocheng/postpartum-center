@@ -28,26 +28,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "image/home.png",
-        "selectedIconPath": "image/home_HL.png"
+        "iconPath": "image/tabbar/home.png",
+        "selectedIconPath": "image/tabbar/home_HL.png"
       },
       {
         "pagePath": "pages/baby/baby",
         "text": "宝宝",
-        "iconPath": "image/baby.png",
-        "selectedIconPath": "image/baby_HL.png"
+        "iconPath": "image/tabbar/baby.png",
+        "selectedIconPath": "image/tabbar/baby_HL.png"
       },
       {
         "pagePath": "pages/mother/mother",
         "text": "宝妈",
-        "iconPath": "image/mother.png",
-        "selectedIconPath": "image/mother_HL.png"
+        "iconPath": "image/tabbar/mother.png",
+        "selectedIconPath": "image/tabbar/mother_HL.png"
       },
       {
         "pagePath": "pages/user/user",
         "text": "我的",
-        "iconPath": "image/user.png",
-        "selectedIconPath": "image/user_HL.png"
+        "iconPath": "image/tabbar/user.png",
+        "selectedIconPath": "image/tabbar/user_HL.png"
       }
     ]
   },
