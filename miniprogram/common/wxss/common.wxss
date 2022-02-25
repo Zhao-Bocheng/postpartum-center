@@ -1,28 +1,26 @@
 /* 小程序中特定部分的统一样式 */
 
 /* 各个分块的最高一级标题文本 */
-.module-title-text {
+.cm-module__title {
   font-weight: bold;
   font-size: 40rpx;
   color: black
 }
 
 /* 描述标题文本 */
-.title-text {
+.cm-desc__title {
   font-weight: bold;
-  font-size: 32rpx;
   color: black;
 }
 
 /* 描述内容文本 */
-.desc-text {
+.cm-desc__content {
   color: #cccccc;
-  font-size: 28rpx;
 }
 
 /* 单行文本省略 */
 /* 这里的省略不需要给定宽度，发现不够就会省略 */
-.sigle_line-ellipsis {
+.cm-sigle-line-ellipsis {
   display: -webkit-box;
   word-break: break-all;
   -webkit-box-orient: vertical;
@@ -33,7 +31,7 @@
 
 /* 单行文本省略 */
 /* 这里的省略需要给定宽度 */
-.sigle_line-ellipsis {
+.cm-sigle-line-ellipsis {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
