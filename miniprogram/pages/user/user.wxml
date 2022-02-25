@@ -1,2 +1,61 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<!-- 无法在进入小程序或页面时就请求头像和昵称 -->
+
+<!-- 如何在已经获取过一次用户信息后，当发现用户信息发生改变后进行更新？ -->
+<view class="profile__wrap">
+  <view class="profile">
+    <view class="avatar">
+        <image src="{{avatarUrl}}" mode="aspectFill" class="avatar__img"></image>
+    </view>
+    <view class="nick-name">
+      <text>{{nickName}}</text>
+    </view>
+  </view>
+  <view class="ask-login" wx:if="{{!userInfo}}">
+    <view class="ask-login__desc">
+      <view class="ask-login__desc__title cm-desc__title">登录后将获取一些权限</view>
+      <view class="ask-login__desc__detail">
+        <view class="ask-login__desc__detail-item cm-desc__content">获取你的公开信息（头像和昵称等）</view>
+      </view>
+    </view>
+    <button class="ask-login__wx-login" type="primary" bindtap="onWXLogin">微信登录</button>
+  </view>
+</view>
+
+<!-- <view class="nickname__wrap">
+  <block wx:if="{{nickName}}">
+    {{nickName}}
+  </block>
+  <block wx:else>
+    <view class="nickname__input-wrap">
+      <label for="nickname" class="nickname__label">昵称</label>
+      <input type="nickname" id="nickname" class="nickname__input"
+             placeholder="输入昵称" maxlength="100"
+             bindconfirm="onConfirmNickName" />
+      <icon type="cancel" class="nickname__clear-ico" size="20" color="gray"></icon>
+    </view>
+  </block>
+</view> -->
+
+<!-- 个人开发者获取不到用户手机号 -->
+<!-- <view>
+  <button open-type="getPhoneNumber"
+          bindgetphonenumber="onGetPhoneNumber">获取手机号</button>
+</view> -->
+
+<!-- <view>
+  <button type="primary" bindtap="onOpenSetting">打开设置</button>
+</view> -->
+
+<!-- <view>
+  <button type="primary" bindtap="onAuthLocation">允许获取地理位置</button>
+</view> -->
+
+<!-- <button type="primary" bindtap="onGetUserProfile">获取用户信息</button> -->
+
+<!-- <button type="primary" bindtap="onGetWXRun">获取微信步数信息</button> -->
+
+<!-- 这个相当于判断你是否调用过 wx.login() ，并且 code 有没有过期而已 -->
+<!-- <button type="primary" bindtap="onCheckSession">check session</button> -->
+
+<!-- web-view 无法使用 -->

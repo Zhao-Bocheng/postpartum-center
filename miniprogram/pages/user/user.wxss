@@ -1,1 +1,63 @@
 /* pages/user/user.wxss */
+.profile__wrap {
+  margin: 100rpx 40rpx 0;
+}
+
+.avatar {
+  margin: 0 auto;
+  width: 120rpx;
+  height: 120rpx;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.nick-name {
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.ask-login {
+  border-top: 1px solid #eeeeee;
+}
+
+.ask-login__desc {
+  padding: 50rpx 30rpx
+}
+
+.ask-login__desc__detail {
+  margin-top: 35rpx;
+}
+
+.ask-login__desc__detail-item {
+  display: flex;
+  word-break: break-all;
+}
+
+.ask-login__desc__detail-item::before {
+  content: '·';
+  font-weight: bold;
+  padding: 0 20rpx;
+}
+
+/* .nickname__wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.nickname__input-wrap {
+  width: 100%;
+  display: flex;
+  border-top: 1rpx solid #eeeeee;
+  border-bottom: 1rpx solid #eeeeee;
+  padding: 20rpx 50rpx;
+}
+
+.nickname__label {
+  margin-right: 40rpx;
+}
+
+.nickname__input {
+  flex: 1;
+} */
+
