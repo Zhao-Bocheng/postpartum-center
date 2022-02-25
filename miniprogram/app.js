@@ -1,13 +1,13 @@
-// const worker = wx.createWorker('workers/request/index.js')
-
-// worker.postMessage({
-//   msg: "Hello worker"
-// })
-
-// worker.terminate();
+import config from "config";
+import { cloudInit } from "./utils/cloudUtils";
 
 App({
+  onLaunch() {
+    // 云环境初始化
+    cloudInit(config.envId);
+  },
+
   globalData: {
-    worker: wx.createWorker('workers/request/index.js'),
-  }
-})
+    config: require("config"),
+  },
+});
