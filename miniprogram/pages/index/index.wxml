@@ -17,8 +17,20 @@
     能否指定显示指标的时间范围（1周？1个月？）
     近七天各项数据（用一个tab栏切换不同的折线图） 
     过去一段时间的指标异常次数
+    添加小程序内搜索功能
 -->
+
+<!-- 为什么这里添加内容之后，echarts 有时候会移位了 -->
+<!-- 因为 nickName 的框体没有宽高，由于请求响应得慢，出现时会把下面框体往下挤，但是canvas已经绘制完毕，无法随着框体移位 -->
+<!-- <view class="avatar" style="width: 50px; height: 50px;">
+  <open-data type="userAvatarUrl"></open-data>
+</view>
+<view class="nick-name" style="height: 20px;">
+  <open-data type="userNickName"></open-data>
+</view> -->
+
 <view>宝宝今日数据</view>
+
 <!-- 本周数据 -->
 <view class="charts-wrap module-wrap">
   <view class="charts-container">
