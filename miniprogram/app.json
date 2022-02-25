@@ -1,25 +1,30 @@
 {
   "pages": [
+    "pages/user/user",
     "pages/index/index",
     "pages/baby/baby",
     "pages/mother/mother",
-    "pages/user/user",
-    "pages/test/test",
     "pages/common/article/article"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "妈宝控",
+    "navigationBarTitleText": "",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
-    "enablePullDownRefresh": true,
-    "networkTimeout": {
-      "request": 20000,
-      "connectSocket": 20000,
-      "uploadFile": 20000,
-      "downloadFile": 20000
+    "enablePullDownRefresh": true
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "为了功能正常使用，需要获取您的地理位置"
     }
+  },
+  "requiredBackgroundModes": ["location"],
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
   },
   "tabBar": {
     "color": "#bfbfbf",
