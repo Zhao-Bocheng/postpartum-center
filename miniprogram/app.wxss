@@ -1,2 +1,3 @@
 @import "/common/wxss/base.wxss";
+@import "/common/wxss/common.wxss";
 @import "/common/wxss/tag.wxss";
