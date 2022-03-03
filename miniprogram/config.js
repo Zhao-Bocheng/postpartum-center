@@ -18,6 +18,9 @@ const config = {
   // 云开发-存储 示例文件的文件 ID
   // demoImageFileId: 'cloud://release-b86096.7265-release-b86096-1258211818/demo.jpg',
   // demoVideoFileId: 'cloud://release-b86096.7265-release-b86096/demo.mp4',
+
+  // 腾讯地图开发者密钥
+  qqMapKey: "U6YBZ-SBJKP-QTLDZ-LCXYX-4M57T-HVBRE",
 }
 
 export default config;

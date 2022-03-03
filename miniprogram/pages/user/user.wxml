@@ -21,7 +21,9 @@
     <button class="ask-login__wx-login" type="primary" bindtap="onWXLogin">微信登录</button>
   </view>
 </view>
+<button bindtap="onGetLocation">获取地理位置</button>
 
+<view>{{address}}</view>
 <!-- <view class="nickname__wrap">
   <block wx:if="{{nickName}}">
     {{nickName}}
