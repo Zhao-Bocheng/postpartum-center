@@ -41,7 +41,7 @@ export function getUserProfile() {
       lang: "zh_CN"
     }).then(res => {
       wx.hideLoading();
-      resolve(res);
+      resolve(res.userInfo);
     }).catch(err => {
       wx.hideLoading();
       wx.showToast({
