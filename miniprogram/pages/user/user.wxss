@@ -1,4 +1,3 @@
-/* pages/user/user.wxss */
 .profile__wrap {
   margin: 100rpx 40rpx 0;
 }
