@@ -1,7 +1,15 @@
 // pages/user/user.js
-import { DEFAULT_AVATAR_URL, DEFAULT_NICK_NAME } from "../../utils/constants";
-import { showOpenSettingModel } from "../../utils/commonUtils";
-import { getMultiOpenData, getOpenData } from "../../utils/cloudUtils.js";
+import {
+  DEFAULT_AVATAR_URL,
+  DEFAULT_NICK_NAME
+} from "../../utils/constants";
+import {
+  showOpenSettingModel
+} from "../../utils/commonUtils";
+import {
+  getMultiOpenData,
+  getOpenData
+} from "../../utils/cloudUtils.js";
 
 Page({
   data: {
@@ -27,7 +35,10 @@ Page({
       success(res) {
         // console.log(res);
         wx.hideLoading();
-        const { avatarUrl, nickName } = res.userInfo;
+        const {
+          avatarUrl,
+          nickName
+        } = res.userInfo;
         that.setData({
           avatarUrl,
           nickName,
@@ -140,30 +151,35 @@ Page({
   //   // });
   // },
 
-  // async onGetWXRun(e) {
-  //   const res2 = await wx.getUserProfile({
-  //     desc: "获取用户头像和昵称",
-  //   });
-  //   const res1 = await wx.getWeRunData();
-  //   // console.log(res1);
-  //   // console.log(res2);
-  //   getMultiOpenData({
-  //     userProfile: res2.cloudID,
-  //     weRunData: res1.cloudID,
-  //     userProfile1: res2.cloudID,
-  //     weRunData1: res1.cloudID,
-  //     userProfile2: res2.cloudID,
-  //     weRunData2: res1.cloudID,
-  //     userProfile3: res2.cloudID,
-  //     weRunData3: res1.cloudID,
-  //   }).then((res) => {
-  //     console.log(res);
-  //   });
-
-  //   getOpenData(res1.cloudID).then((res) => {
-  //     console.log(res);
-  //   });
-  // },
+  onGetWXRun(e) {
+    Promise.allSettled([
+      wx.getWeRunData(),
+      wx.getUserProfile({
+        desc: '获取用户头像和昵称',
+      }),
+    ])
+      .then(results => {
+        console.log(results);
+        const res1 = results[0].value ? results[0].value : results[0].reason;
+        const res2 = results[1].value ? results[1].value : results[1].reason;
+        getMultiOpenData({
+          userProfile: res2.cloudID,
+          weRunData: res1.cloudID,
+          userProfile1: res2.cloudID,
+          weRunData1: res1.cloudID,
+          userProfile2: res2.cloudID,
+          weRunData2: res1.cloudID,
+          userProfile3: res2.cloudID,
+          weRunData3: res1.cloudID,
+          test: "123"
+        }).then((res) => {
+          console.log(res);
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  },
 
   // onCheckSession() {
   //   wx.checkSession({
