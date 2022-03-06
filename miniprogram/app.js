@@ -1,18 +1,13 @@
-import config from "config";
-import {
-  cloudInit
-} from "./utils/cloudUtils";
-import QQMapSDK from "./utils/qqMapInit"
+import {init} from "./utils/init";
+
+// 执行初始化操作
+const initGlobalDataObj = init();
 
 App({
-  onLaunch() {
-    // 云环境初始化
-    cloudInit(config.envId);
-  },
+  onLaunch() {},
 
-  globalData: {
-    config,
-    // 实例化腾讯地图API核心类
-    QQMapSDK,
-  },
+  // 将初始化函数返回的全局数据和这里的全局数据合并
+  globalData: Object.assign({
+    // 全局数据定义在这里
+  }, initGlobalDataObj)
 });
