@@ -17,26 +17,11 @@
 }
 
 .ask-login {
-  border-top: 1px solid #eeeeee;
+  border-top: 2px solid #eeeeee;
 }
 
 .ask-login__desc {
   padding: 50rpx 30rpx
-}
-
-.ask-login__desc__detail {
-  margin-top: 35rpx;
-}
-
-.ask-login__desc__detail-item {
-  display: flex;
-  word-break: break-all;
-}
-
-.ask-login__desc__detail-item::before {
-  content: '·';
-  font-weight: bold;
-  padding: 0 20rpx;
 }
 
 /* .nickname__wrap {

@@ -1,4 +1,5 @@
 // pages/user/user.js
+import { getOpenData } from "../../utils/cloudUtils";
 import {
   getLocation,
   getUserProfile
@@ -16,17 +17,18 @@ Page({
   },
 
   onLoad() {
+    console.log(getApp().globalData);
     const _this = this;
-    getLocation()
-      .then(res => {
-        console.log("user.js getLocation success", res);
-        _this.setData({
-          address: res.formatted_addresses.recommend.split("(")[0],
-        })
-      })
-      .catch(err => {
-        console.log("user.js getLocation fail", err);
-      })
+    // getLocation()
+    //   .then(res => {
+    //     console.log("user.js getLocation success", res);
+    //     _this.setData({
+    //       address: res.formatted_addresses.recommend.split("(")[0],
+    //     })
+    //   })
+    //   .catch(err => {
+    //     console.log("user.js getLocation fail", err);
+    //   })
   },
 
   // 获取头像和昵称
@@ -45,18 +47,6 @@ Page({
       })
     }).catch(err => {
       console.log(err);
-    })
-  },
-
-  onGetLocation() {
-    const _this = this;
-    getLocation().then(res => {
-      console.log("user.js getLocation success", res);
-      _this.setData({
-        address: res.formatted_addresses.recommend.split("(")[0],
-      })
-    }).catch(err => {
-      console.log("user.js getLocation fail", err);
     })
   },
 });

@@ -5,7 +5,8 @@
 <view class="profile__wrap">
   <view class="profile">
     <view class="avatar">
-        <image src="{{avatarUrl}}" mode="aspectFill" class="avatar__img"></image>
+      <image src="{{avatarUrl}}" mode="aspectFill"
+             class="avatar__img"></image>
     </view>
     <view class="nick-name">
       <text>{{nickName}}</text>
@@ -13,17 +14,15 @@
   </view>
   <view class="ask-login" wx:if="{{!userInfo}}">
     <view class="ask-login__desc">
-      <view class="ask-login__desc__title cm-desc__title">登录后将获取一些权限</view>
-      <view class="ask-login__desc__detail">
-        <view class="ask-login__desc__detail-item cm-desc__content">获取你的公开信息（头像和昵称等）</view>
-      </view>
+      <auth-list title="登录后将获取一些权限"
+                 list="{{['获取你的公开信息（头像和昵称等）', '获取您的地理位置']}}"></auth-list>
     </view>
-    <button class="ask-login__wx-login" type="primary" bindtap="onWXLogin">微信登录</button>
+    <button class="ask-login__wx-login"
+            type="primary"
+            bindtap="onWXLogin">微信登录</button>
   </view>
 </view>
-<button bindtap="onGetLocation">获取地理位置</button>
 
-<view>{{address}}</view>
 <!-- <view class="nickname__wrap">
   <block wx:if="{{nickName}}">
     {{nickName}}
