@@ -15,15 +15,18 @@ Page({
     userInfo: null,
   },
 
-  onShow() {
+  onLoad() {
     const _this = this;
-    // getLocation().then(res => {
-    //   console.log(res);
-    //   _this.setData({
-    //     address: res.formatted_addresses.recommend.split("(")[0],
-    //   })
-    // })
-    getLocation();
+    getLocation()
+      .then(res => {
+        console.log("user.js getLocation success", res);
+        _this.setData({
+          address: res.formatted_addresses.recommend.split("(")[0],
+        })
+      })
+      .catch(err => {
+        console.log("user.js getLocation fail", err);
+      })
   },
 
   // 获取头像和昵称
@@ -48,12 +51,12 @@ Page({
   onGetLocation() {
     const _this = this;
     getLocation().then(res => {
-      console.log(res);
+      console.log("user.js getLocation success", res);
       _this.setData({
         address: res.formatted_addresses.recommend.split("(")[0],
       })
     }).catch(err => {
-      console.log(err);
+      console.log("user.js getLocation fail", err);
     })
   },
 });

@@ -65,6 +65,7 @@ export function getUserProfile() {
 // 获取地理位置（详细地点名称）
 export function getLocation() {
   return new Promise((resolve, reject) => {
+    // 如果是第一次调用 wx.getLocation() 会自动弹窗，只有拒绝位置信息授权后才调用自定义弹窗
     wx.getLocation({
       type: "gcj02",
       success(res) {
@@ -101,14 +102,23 @@ export function getLocation() {
           只有在未获得位置信息授权时才需要调用打开设置弹窗
           利用两种情况下的 errMsg 不一样的特点来判断是否需要调用弹窗（当然也可以通过wx.getSetting()获取设置的授权状态来判断）
         */
-        if(err.errMsg.includes("auth deny")) {
+        if (err.errMsg.includes("auth deny")) {
           showOpenSettingModal("无法获取地理位置", "为了功能的正常使用，请打开位置消息权限")
             .then(res => {
-              // 缺少开放位置信息权限后获取定位操作
+              // 设置之后再试着获取一次位置
+              getLocation()
+                .then(res => {
+                  resolve(res);
+                })
+                .catch(err => {
+                  reject(err);
+                })
             })
             .catch(err => {
               reject(err);
             })
+        } else {
+          reject(err);
         }
       }
     })
