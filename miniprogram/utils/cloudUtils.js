@@ -6,7 +6,7 @@
   https://developers.weixin.qq.com/community/develop/article/doc/00062eab0508684539cba249f59413
 */
 
-// 云环境初始化函数
+// 小程序端的云环境初始化函数（用于指定小程序端默认情况下访问哪个云环境的资源）
 export function cloudInit(envId) {
   wx.cloud.init({
     env: envId,
