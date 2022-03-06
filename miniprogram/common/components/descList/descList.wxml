@@ -1,0 +1,11 @@
+<!-- 该组件用于以列表形式描述内容 -->
+<view class="desc-list">
+  <view class="desc-list__title title-class">{{title}}</view>
+  <view class="desc-list__content content-class">
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="desc-list__item">
+        <view class="desc-list__item-detail">{{item}}</view>
+      </view>
+    </block>
+  </view>
+</view>

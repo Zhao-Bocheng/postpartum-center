@@ -1,0 +1,24 @@
+.desc-list__title {
+  font-weight: bold;
+  color: black;
+}
+
+.desc-list__content {
+  margin-top: 35rpx;
+  color: #cccccc;
+}
+
+.desc-list__item {
+  display: flex;
+  margin-top: 10rpx;
+}
+
+.desc-list__item::before {
+  content: '·';
+  font-weight: bold;
+  padding: 0 20rpx;
+}
+
+.desc-list__item-detail {
+  word-break: break-all;
+}
