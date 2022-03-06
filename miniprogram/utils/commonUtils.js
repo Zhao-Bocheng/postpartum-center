@@ -2,8 +2,6 @@
 
 // 引入腾讯地图SDK
 import QQMapSDK from "./qqMapInit";
-// 引入节流函数
-import throttle from "./throttle";
 
 // 显示“打开设置”弹窗
 export function showOpenSettingModal(
