@@ -14,12 +14,12 @@
   </view>
   <view class="ask-login" wx:if="{{!userInfo}}">
     <view class="ask-login__desc">
-      <auth-list title="登录后将获取一些权限"
-                 list="{{['获取你的公开信息（头像和昵称等）', '获取您的地理位置']}}"></auth-list>
+      <auth-list title="登录/注册后将获取一些权限"
+                 list="{{['获取你的公开信息（头像和昵称等）', '获取您的地理位置', '获取您的手机号码']}}"></auth-list>
     </view>
     <button class="ask-login__wx-login"
             type="primary"
-            bindtap="onWXLogin">微信登录</button>
+            bindtap="onWXLogin">微信一键登录/注册</button>
   </view>
 </view>
 
