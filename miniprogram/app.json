@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/baby/baby",
     "pages/mother/mother",
-    "pages/common/article/article"
+    "pages/common/article/article",
+    "pages/auth/auth"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -19,7 +20,9 @@
       "desc": "为了功能正常使用，需要获取您的地理位置"
     }
   },
-  "requiredBackgroundModes": ["location"],
+  "requiredBackgroundModes": [
+    "location"
+  ],
   "networkTimeout": {
     "request": 20000,
     "connectSocket": 20000,
