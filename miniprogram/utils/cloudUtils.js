@@ -90,7 +90,7 @@ export function getOpenId() {
 // 获取指定环境云数据库引用
 export function getCloudDBRef(envId = config.envId) {
   const db = wx.cloud.database({
-    env: config.envId
+    env: envId
   });
   return db;
 }
