@@ -6,6 +6,8 @@
   https://developers.weixin.qq.com/community/develop/article/doc/00062eab0508684539cba249f59413
 */
 
+import config from "../config";
+
 // 小程序端的云环境初始化函数（用于指定小程序端默认情况下访问哪个云环境的资源）
 export function cloudInit(envId) {
   wx.cloud.init({
@@ -72,13 +74,23 @@ export function getMultiOpenData(cloudIdList = {}) {
 }
 
 // 所谓登录其实就是获取用户 openid ，这里使用的是云开发，没有复杂的鉴权流程
-export function login() {
+export function getOpenId() {
   return new Promise((resolve, reject) => {
     wx.cloud.callFunction({
       name: "wxContext",
       data: {},
     }).then(res => {
       resolve(res.result.openid)
+    }).catch(err => {
+      reject(err);
     })
   })
+}
+
+// 获取指定环境云数据库引用
+export function getCloudDBRef(envId = config.envId) {
+  const db = wx.cloud.database({
+    env: config.envId
+  });
+  return db;
 }
