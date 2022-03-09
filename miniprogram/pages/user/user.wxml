@@ -23,6 +23,8 @@
   </view>
 </view>
 
+<button bindtap="onSendSms">发送短信</button>
+
 <!-- <view class="nickname__wrap">
   <block wx:if="{{nickName}}">
     {{nickName}}
