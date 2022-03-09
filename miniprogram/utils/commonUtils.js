@@ -1,4 +1,5 @@
 // 常用工具函数封装
+// 主要是业务逻辑的封装
 
 import { getUserData } from "./cloudDBUtils";
 // 引入腾讯地图SDK
