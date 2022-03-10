@@ -14,4 +14,9 @@ module.exports = {
   TEMPLATE_LOGIN_ID: "1326325",
   // 登录短信正文模板2
   TEMPLATE_LOGIN_ID_2: "1326866",
+
+  // 验证码状态
+  NORMAL: "normal",
+  USED: "used",
+  EXPIRED: "expired",
 }
