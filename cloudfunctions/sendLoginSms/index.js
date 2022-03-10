@@ -10,13 +10,15 @@ Cloud.init({
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const phoneNumberSet = [event.phoneNumber];
+  const phoneNumber = event.phoneNumber;
 
   const sendSmsRes = await Cloud.callFunction({
     name: "sendVertificationCodeSms",
     data: {
       smsType: LOGIN,
-      phoneNumberSet
+      phoneNumber,
+      // 在云端被调用的云函数上下文无法获取到用户 openid 
+      userInfo: event.userInfo,
     }
   });
 
