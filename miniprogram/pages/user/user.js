@@ -38,12 +38,27 @@ Page({
     // }).catch(err => {
     //   console.log("error", err);
     // })
-    sendLoginCode("13246175715")
+    
+    sendLoginCode("18344367175")
       .then(res => {
         console.log(res);
       })
       .catch(err => {
         console.log("error", err);
       })
+
+    // wx.cloud.database().collection("users").add({
+    //   data: {
+    //     avatarUrl: "https://......",
+    //     cith: "惠州",
+    //     province: "广东",
+    //     nickName: "abc",
+    //     gender: "1",
+    //   }
+    // }).then(res => {
+    //   console.log(res);
+    // }).catch(err => {
+    //   console.log("error", err);
+    // })
   }
 });
