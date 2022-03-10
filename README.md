@@ -11,9 +11,11 @@
 - [ ] 抽离`commonUtils.js`中的腾讯地图逻辑
 - [ ] 完善短信验证码流程
       - [x] 完善短信验证码生成方法`generateCode`
-      - [x] 完善云函数`sendVertificationCodeSms`的验证码写入数据库的步骤
-      - [ ] 完善短信验证码云函数`validateVCode`（完善云数据库集合`vcode-record`）
+      - [x] 完善云函数`sendVertificationCodeSms`的验证码写入数据库的步骤（完善云数据库集合`vcode-record`）
+      - [ ] 添加短信验证码云函数`validateVCode`
       - [ ] 将SMS相关私密配置信息存储到数据库中提取（切换 secretId 和 secretKey）
+      - [ ] 优化数据库插入函数
+      - [ ] 完善短信验证码相关常量取值的定义
 - [ ] 寻找配置路径别名的解决方案
 - [ ] 有获取位置信息的权限但没开手机定位，为什么还是能获取到我的位置(可能是因为有缓存？？)
 
