@@ -52,7 +52,7 @@ exports.main = async (event, context) => {
   // 如果验证码成功发送
   if(sendSmsRes.result.SendStatusSet[0].Code === "Ok") {
     // 将该条验证码记录添加到数据库中
-    addSmsRecord({
+    addVcodeRecord({
       openid: event.userInfo.openId,
       pnumber: phoneNumberSet[0],
       vcode: vcode,
@@ -87,7 +87,7 @@ function generateCode(codeLen) {
 }
 
 // 参数需要传入 openId, 联系人手机号, 验证码, 验证码有效时间(ms)
-async function addSmsRecord(params) {
+async function addVcodeRecord(params) {
   const db = Cloud.database();
 
   const res = await db.collection("vcode-record").add({
