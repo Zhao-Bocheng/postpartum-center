@@ -1,1 +1,0 @@
-"D:\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-9g50mutze1d19816 --n quickstartFunctions --r --project "D:\WeChatPrograms\PostpartumCenter" --report_first && "D:\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud2-8gf13u9f5e58d9bd --n quickstartFunctions --r --project "D:\WeChatPrograms\PostpartumCenter" --report
