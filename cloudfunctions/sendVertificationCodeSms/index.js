@@ -1,7 +1,6 @@
 const Cloud = require('wx-server-sdk')
 
-// 云数据库中存储sms类型和其对应短信模板等信息的数据库名称
-const SMS_DB = "tencent-sms";
+const { SMS_TEMPLATE_INFO, VCODE_RECORD } = require("./constants");
 
 Cloud.init({
   env: Cloud.DYNAMIC_CURRENT_ENV
@@ -18,18 +17,8 @@ exports.main = async (event, context) => {
   // 验证码有效期（minute）
   const termOfValidity = (Number.isInteger(event.termOfValidity) && event.termOfValidity >= 3) ? event.termOfValidity : 5; // 默认 5 分钟
   
-  // 从数据库获取验证码短信的正文模板 ID 等内容
-  const db = Cloud.database();
-  const dbRes = await db.collection(SMS_DB).where({
-    smsType
-  }).get();
-  const dbData = dbRes.data;
-  // 如果获取不到记录则抛出错误
-  if(dbData.length === 0) {
-    throw new Error("传入 smsType 的值有误: 取值为\"login\"或\"register\"")
-  }
-  // 短信正文模板ID
-  const templateId = dbData[0].templateId;
+  // 根据传入的 smsType 从数据库获取验证码短信的正文模板 ID 等内容
+  const templateId = await getSmsTemplateInfo(smsType);
 
   // 正文模板参数列表（验证码短信的模板统一需要两个参数：验证码和验证码有效分钟数）
   // 参数顺序规定为 验证码在前，分钟数在后
@@ -40,6 +29,7 @@ exports.main = async (event, context) => {
   // 验证码有效期（minute）（需要转字符串，因为参数列表要求是一个字符串数组）
   templateParamSet.push(termOfValidity + '');
 
+  // 调用云函数 sendSms 发送短信
   const sendSmsRes = await Cloud.callFunction({
     name: "sendSms",
     data: {
@@ -63,6 +53,23 @@ exports.main = async (event, context) => {
   return sendSmsRes.result;
 }
 
+// 获取验证码短信模板相关信息
+async function getSmsTemplateInfo(smsType) {
+  const db = Cloud.database();
+  const dbRes = await db.collection(SMS_TEMPLATE_INFO).where({
+    smsType
+  }).get();
+  const dbData = dbRes.data;
+  // 如果获取不到记录则抛出错误
+  if(dbData.length === 0) {
+    throw new Error("传入 smsType 的值有误: 取值为\"login\"或\"register\"")
+  }
+  // 短信正文模板ID
+  const templateId = dbData[0].templateId;
+
+  return templateId;
+}
+
 // 生成随机数字验证码
 function generateCode(codeLen) {
   // 验证码保持在 4 到 6 位
@@ -77,7 +84,7 @@ function generateCode(codeLen) {
   const rawCodeLen = rawCode.length;
 
   const randomIdx = Math.floor(Math.random() * rawCodeLen);
-  console.log(randomIdx, rawCode);
+  // console.log(randomIdx, rawCode);
   const code =
     randomIdx + 6 <= rawCodeLen
       ? rawCode.slice(randomIdx, randomIdx + codeLen)
@@ -86,11 +93,12 @@ function generateCode(codeLen) {
   return code;
 }
 
+// 向数据库添加已发送的短信验证码记录
 // 参数需要传入 openId, 联系人手机号, 验证码, 验证码有效时间(ms)
 async function addVcodeRecord(params) {
   const db = Cloud.database();
 
-  const res = await db.collection("vcode-record").add({
+  const res = await db.collection(VCODE_RECORD).add({
     data: {
       _openid: params.openid,
       pnumber: params.pnumber,
