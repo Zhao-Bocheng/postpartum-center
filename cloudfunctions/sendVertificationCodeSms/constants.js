@@ -19,4 +19,10 @@ module.exports = {
   NORMAL: "normal",
   USED: "used",
   EXPIRED: "expired",
+
+  // 数据库名称常量
+  // 腾讯SMS模板信息
+  SMS_TEMPLATE_INFO: "tencent-sms",
+  // 短信验证码记录
+  VCODE_RECORD: "vcode-record",
 }
