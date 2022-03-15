@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
   const templateId = event.templateId;
   const templateParamSet = event.templateParamSet;
 
-  const {secretId, secretKey, region, smsSdkAppId, signName} = await getBaseConfigInfo();
+  const {secretId, secretKey, region, smsSdkAppId, signName, httpProfileEndPoint} = await getBaseConfigInfo();
 
   const SmsClient = tencentcloud.sms.v20210111.Client;
   const clientConfig = {
@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
     region: region, // 数据库中提取
     profile: {
       httpProfile: {
-        endpoint: "sms.tencentcloudapi.com",
+        endpoint: httpProfileEndPoint, // 从数据库中获取
       },
     },
   };
