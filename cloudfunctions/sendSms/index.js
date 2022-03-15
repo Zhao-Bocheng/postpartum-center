@@ -11,13 +11,15 @@ exports.main = async (event, context) => {
   const templateId = event.templateId;
   const templateParamSet = event.templateParamSet;
 
+  const {secretId, secretKey, region, smsSdkAppId, signName} = await getBaseConfigInfo();
+
   const SmsClient = tencentcloud.sms.v20210111.Client;
   const clientConfig = {
     credential: {
-      secretId: "AKID61g4B1buwg9MIxqTqwlKbbKmxrTothFY", // 数据库中提取
-      secretKey: "5tQgfNnwoQknZ4JHyPZS4OSFkyvbz6wV", // 数据库中提取
+      secretId: secretId, // 数据库中提取
+      secretKey: secretKey, // 数据库中提取
     },
-    region: "ap-guangzhou", // 数据库中提取
+    region: region, // 数据库中提取
     profile: {
       httpProfile: {
         endpoint: "sms.tencentcloudapi.com",
@@ -29,16 +31,37 @@ exports.main = async (event, context) => {
 
   const params = {
       PhoneNumberSet: phoneNumberSet,
-      SmsSdkAppId: "1400641766", // 从数据库中获取
-      SignName: "抖动的凶鸡个人公众号", // 从数据库中获取
+      SmsSdkAppId: smsSdkAppId, // 从数据库中获取
+      SignName: signName, // 从数据库中获取
       TemplateId: templateId,
-      // 由一个函数生成参数
       TemplateParamSet: templateParamSet,
   };
 
   const sendSmsRes = await client.SendSms(params);
 
   return sendSmsRes;
+}
+
+// smsType 取值
+const BASE_CONFIG = "baseConfig";
+// 基本配置信息所在集合名称
+const BASE_CONFIG_DB = "tencent-sms";
+
+// 从数据库获取SMS服务基本配置信息
+async function getBaseConfigInfo() {
+  const db = Cloud.database();
+
+  const dbRes = await db.collection(BASE_CONFIG_DB).where({
+    smsType: BASE_CONFIG,
+  }).get();
+  const dbData = dbRes.data;
+  if(dbData.length === 0) {
+    throw new Error("无法获取到SMS服务的基本配置信息");
+  }
+  // 基本配置信息
+  const baseConfig = dbData[0];
+
+  return baseConfig;
 }
 
 
