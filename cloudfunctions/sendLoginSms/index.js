@@ -17,7 +17,9 @@ exports.main = async (event, context) => {
     data: {
       smsType: LOGIN,
       phoneNumber,
-      // 在云端被调用的云函数上下文无法获取到用户 openid 
+      vcodeLen: 6,
+      termOfValidity: 3,
+      // 在云端被调用的云函数上下文无法获取到用户 openid ，需要特地传递参数
       userInfo: event.userInfo,
     }
   });
