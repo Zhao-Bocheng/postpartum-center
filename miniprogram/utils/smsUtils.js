@@ -5,7 +5,7 @@ import { REGISTER_CODE, LOGIN_CODE } from "./constants";
 // 发送验证码短信
 export function sendCode(smsType, phoneNumber) {
   return new Promise((resolve, reject) => {
-    let sendCodeRes = null;
+    // let sendCodeRes = null;
     let cloudFuncName = '';
     if(smsType === REGISTER_CODE) {
       cloudFuncName = "sendRegisterSms";
@@ -20,7 +20,7 @@ export function sendCode(smsType, phoneNumber) {
         phoneNumber
       }
     }).then(res => {
-      sendCodeRes = res.result;
+      // sendCodeRes = res.result;
       resolve(res);
     }).catch(err => {
       reject(err);
@@ -51,5 +51,22 @@ export function sendLoginCode(phoneNumber) {
       .catch(err => {
         reject(err);
       })
+  })
+}
+
+// 验证短信验证码
+export function validateVCode(phoneNumber, vcode) {
+  return new Promise((resolve, reject) => {
+    wx.cloud.callFunction({
+      name: "validateVCode",
+      data: {
+        pnumber: phoneNumber,
+        vcode: vcode,
+      }
+    }).then(res => {
+      resolve(res.result);
+    }).catch(err => {
+      reject(err);
+    })
   })
 }
