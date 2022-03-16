@@ -13,11 +13,11 @@ export function getUserData() {
   return new Promise((resolve, reject) => {
     DB.collection(USER_COLLECTION).where({
       // 当权限为 "仅创建者可读写" 时，查询时会默认给查询条件加上一条 _openid 必须等于用户 openid
-      // 这个查询设置实际上是可以省略的
+      // 这个查询条件实际上是可以省略的
       _openid: "{openid}"
     }).get({
       success(res) {
-        resolve(res.data);
+        resolve(res.data[0] ? res.data[0] : null);
       },
       fail(err) {
         reject(err);
